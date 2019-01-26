@@ -8,8 +8,8 @@ class Employees
     private $birth;
     private $gender;
     private $income;
-    private $employees=[];
-    private $employeelist= ['name' => 'Name', 'lastname' => 'Lastname', 'birth' => 'Birth', 'gender' => 'Gender', 'income' => 'Income'];
+    protected $employees=[];
+    protected $employeeList= ['name' => 'Name', 'lastname' => 'Lastname', 'birth' => 'Birth', 'gender' => 'Gender', 'income' => 'Income'];
 
 
     public function getId()
