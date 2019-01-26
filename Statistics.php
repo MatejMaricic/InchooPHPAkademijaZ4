@@ -1,6 +1,6 @@
 <?php
 
-class Statistika
+class Statistics
 {
 
     public function printStatMenu()
@@ -8,7 +8,7 @@ class Statistika
 
 
         while (true) {
-            echo "************ Statistika ******************\n";
+            echo "************ Statistics ******************\n";
             echo "1 - Ukupna starost\n";
             echo "2 - Prosječna starost\n";
             echo "3 - Ukupna primanja\n";
