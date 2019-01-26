@@ -5,6 +5,7 @@ class AppManagement
     public function __construct()
     {
         $userAction = new UserAction();
+        $listAllEmployees = new EmployeeView();
 
 
         while( true ) {
@@ -22,7 +23,11 @@ class AppManagement
 
                 case 1:
                     {
-                        break;
+                       $listAllEmployees->ListAllEmployees();
+                        echo "Za povratak u izbornik upišite da ";
+                        if (readline() === 'da'){
+                            break;
+                        }
                     }
 
                 case 2:
