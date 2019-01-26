@@ -9,7 +9,7 @@ class Employees
     private $gender;
     private $income;
     protected $employees=[];
-    protected $employeeList= ['name' => 'Name', 'lastname' => 'Lastname', 'birth' => 'Birth', 'gender' => 'Gender', 'income' => 'Income'];
+    protected $employeeScheme= ['name' => 'Name', 'lastname' => 'Lastname', 'birth' => 'Birth', 'gender' => 'Gender', 'income' => 'Income'];
 
 
     public function getId()

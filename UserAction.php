@@ -7,7 +7,7 @@ class UserAction extends Employees {
     public function addUser(){
 
 
-            foreach ($this->employeeList as $key => $singleUser) {
+            foreach ($this->employeeScheme as $key => $singleUser) {
 
 
                 $data[$key] = readline("$singleUser : ");
