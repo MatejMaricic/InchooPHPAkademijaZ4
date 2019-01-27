@@ -4,8 +4,12 @@ class AppManagement
 {
     public function __construct()
     {
-        $userAction = new UserAction();
-        $listAllEmployees = new EmployeeView();
+        $employeeStorage = new EmployeesStorage();
+        $employeeStorageInstance = $employeeStorage->getInstance();
+        $userAction = new UserAction($employeeStorageInstance);
+        $listAllEmployees = new EmployeeView($employeeStorageInstance);
+
+
 
 
         while( true ) {

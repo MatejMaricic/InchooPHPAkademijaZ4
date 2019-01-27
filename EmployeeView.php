@@ -1,11 +1,22 @@
 <?php
 
-class EmployeeView extends Employees
+class EmployeeView
 {
+    private $userStorage;
+
+    public function __construct($employeeStorageInstance)
+    {
+        $this->userStorage = $employeeStorageInstance;
+
+    }
+
     public function ListAllEmployees()
     {
 
-        print_r($this->employees);
+       foreach($this->userStorage->getEmployees() as $key => $singleuser)
+       {
+           echo $key + 1 . ". " . $singleuser['name'] . " " . $singleuser['lastname'] . " " . $singleuser['birth'] . " " . $singleuser['gender'] . " " . $singleuser['income'] . "\n";
+       }
     }
 
 }

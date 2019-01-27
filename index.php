@@ -1,7 +1,7 @@
 <?php
 
 require 'Statistics.php';
-require 'Employees.php';
+require 'EmployeesStorage.php';
 require 'UserAction.php';
 require 'AppManagement.php';
 require 'EmployeeView.php';

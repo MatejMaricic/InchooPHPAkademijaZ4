@@ -1,19 +1,30 @@
 <?php
 
-class UserAction extends Employees {
+class UserAction {
+
+    private $userStorage;
+
+    public function __construct($employeeStorageInstance)
+    {
+        $this->userStorage = $employeeStorageInstance;
+
+    }
 
 
 
     public function addUser(){
 
 
-            foreach ($this->employeeScheme as $key => $singleUser) {
+            foreach ($this->userStorage->getEmployeeScheme() as $key => $singleUser) {
 
 
                 $data[$key] = readline("$singleUser : ");
 
+
             }
-            $this->employees[] = $data;
+
+            $this->userStorage->setEmployees($data);
+
 
 
 
@@ -38,7 +49,7 @@ class UserAction extends Employees {
         }
     }
     public function getUser(){
-        print_r($this->employees);
+        print_r($this->userStorage->getEmployees());
     }
 
 
