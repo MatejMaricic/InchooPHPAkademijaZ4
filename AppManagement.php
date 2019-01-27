@@ -27,11 +27,15 @@ class AppManagement
 
                 case 1:
                     {
+                        do {
                        $listAllEmployees->ListAllEmployees();
                         echo "Za povratak u izbornik upišite da ";
-                        if (readline() === 'da'){
+                        if (readline() === 'da') {
                             break;
-                        }
+                        }else
+                            {false;}
+                        }while(true);
+                            break;
                     }
 
                 case 2:
@@ -54,6 +58,7 @@ class AppManagement
                     }
                 case 4:
                     {
+                        $userAction->deleteUser();
                         break;
                     }
                 case 5:

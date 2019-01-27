@@ -9,6 +9,17 @@ class EmployeesStorage
     protected $employeeScheme = ['name' => 'Ime:', 'lastname' => 'Prezime:', 'birth' => 'Datum Rođenja (dd. MM. YYYY):', 'gender' => 'Spol (M/Ž):', 'income' => 'Mjesečna primanja:'];
 
 
+    public function deleteEmployee($delete)
+    {
+        foreach ($this->employees as $key=>$value)
+        {
+            if ($key == $delete){
+                unset($this->employees[$delete]);
+            }
+
+        }
+    }
+
 
     public function getEmployees()
     {

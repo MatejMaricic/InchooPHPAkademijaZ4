@@ -15,7 +15,7 @@ class EmployeeView
 
        foreach($this->userStorage->getEmployees() as $key => $singleuser)
        {
-           echo $key + 1 . ". " . $singleuser['name'] . " " . $singleuser['lastname'] . " " . $singleuser['birth'] . " " . $singleuser['gender'] . " " . $singleuser['income'] . "\n";
+           echo $key . ". " . $singleuser['name'] . " " . $singleuser['lastname'] . " " . $singleuser['birth'] . " " . $singleuser['gender'] . " " . $singleuser['income'] . "\n";
        }
     }
 
