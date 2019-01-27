@@ -4,10 +4,9 @@ class AppManagement
 {
     public function __construct()
     {
-        $employeeStorage = new EmployeesStorage();
-        $employeeStorageInstance = $employeeStorage->getInstance();
-        $userAction = new UserAction($employeeStorageInstance);
-        $listAllEmployees = new EmployeeView($employeeStorageInstance);
+        new EmployeesStorage();
+        $userAction = new UserAction();
+        $listAllEmployees = new EmployeeView();
 
 
 
@@ -49,11 +48,13 @@ class AppManagement
                             $userAction -> addMultipleUsers();
                         }
                         $userAction ->getUser();
+                        break;
 
 
                     }
                 case 3:
                     {
+                        $userAction->editUser();
                         break;
                     }
                 case 4:

@@ -9,17 +9,14 @@ class EmployeesStorage
     protected $employeeScheme = ['name' => 'Ime:', 'lastname' => 'Prezime:', 'birth' => 'Datum Rođenja (dd. MM. YYYY):', 'gender' => 'Spol (M/Ž):', 'income' => 'Mjesečna primanja:'];
 
 
-    public function deleteEmployee($delete)
+    public static function getInstance()
     {
-        foreach ($this->employees as $key=>$value)
-        {
-            if ($key == $delete){
-                unset($this->employees[$delete]);
-            }
+        if (!isset(self::$instance)) {
 
+            self::$instance = new self();
         }
+        return self::$instance;
     }
-
 
     public function getEmployees()
     {
@@ -32,25 +29,27 @@ class EmployeesStorage
         $this->employees[] = $employees;
     }
 
+    public function removeEmployee($id)
+    {
+        unset($this->employees[$id]);
+    }
+
+    public function getEmployee($id)
+    {
+        return $this->employees[$id];
+
+    }
+
 
     public function getEmployeeScheme()
     {
         return $this->employeeScheme;
     }
 
-
-    public function setEmployeeScheme($employeeScheme)
+    public function deleteEmployee($id)
     {
-        $this->employeeScheme = $employeeScheme;
+        unset($this->employees[$id]);
     }
 
-    public static function getInstance()
-    {
-        if (!isset(self::$instance)) {
-
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
 
 }

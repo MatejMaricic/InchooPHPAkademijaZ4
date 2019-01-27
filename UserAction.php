@@ -1,16 +1,7 @@
 <?php
 
-class UserAction  {
+class UserAction extends Users {
 
-    private $userStorage;
-
-
-    public function __construct($employeeStorageInstance)
-    {
-        $this->userStorage = $employeeStorageInstance;
-
-
-    }
 
 
 
@@ -18,14 +9,14 @@ class UserAction  {
     {
 
 
-            foreach ($this->userStorage->getEmployeeScheme() as $key => $singleUser) {
+            foreach ($this->employeeStorage->getEmployeeScheme() as $key => $singleUser) {
 
 
                 $data[$key] = readline("$singleUser : ");
 
             }
 
-            $this->userStorage->setEmployees($data);
+            $this->employeeStorage->setEmployees($data);
 
 
 
@@ -52,24 +43,37 @@ class UserAction  {
     }
     public function getUser()
     {
-        print_r($this->userStorage->getEmployees());
+        print_r($this->employeeStorage->getEmployees());
     }
 
     public function deleteUser()
 
     {
 
-        foreach($this->userStorage->getEmployees() as $key => $singleuser)
+        foreach($this->employeeStorage->getEmployees() as $key => $singleuser)
         {
 
             echo $key  . ". " . $singleuser['name'] . " " . $singleuser['lastname'] . " " . $singleuser['birth'] . " " . $singleuser['gender'] . " " . $singleuser['income'] . "\n";
         }
 
 
-            $delete = readline("Unesite broj ispred zaposlenika kojeg želite izbrisati : ");
+            $id = readline("Unesite broj ispred zaposlenika kojeg želite izbrisati : ");
 
-            $this->userStorage->deleteEmployee($delete);
+            $this->employeeStorage->deleteEmployee($id);
 
+
+    }
+
+    public function editUser()
+    {
+        foreach($this->employeeStorage->getEmployees() as $key => $singleuser)
+        {
+
+            echo $key  . ". " . $singleuser['name'] . " " . $singleuser['lastname'] . " " . $singleuser['birth'] . " " . $singleuser['gender'] . " " . $singleuser['income'] . "\n";
+        }
+
+        $id = readline("Unesite broj ispred zaposlenika čije podatke želite izmjeniti: ");
+        $this->employeeStorage->editEmployee($id);
 
     }
 
