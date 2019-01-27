@@ -6,9 +6,9 @@ class EmployeeView extends Users
     public function ListAllEmployees()
     {
 
-       foreach($this->employeeStorage->getEmployees() as $key => $singleuser)
+       foreach($this->employeeStorage->getEmployees() as $key => $singleUser)
        {
-           echo $key . ". " . $singleuser['name'] . " " . $singleuser['lastname'] . " " . $singleuser['birth'] . " " . $singleuser['gender'] . " " . $singleuser['income'] . "\n";
+           echo $key . ". " . $singleUser['name'] . " " . $singleUser['lastname'] . " " . $singleUser['birth'] . " " . $singleUser['gender'] . " " . $singleUser['income'] . "\n";
        }
     }
 
