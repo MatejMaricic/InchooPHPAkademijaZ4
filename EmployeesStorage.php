@@ -35,10 +35,6 @@ class EmployeesStorage
         return $this->employees[$id];
     }
 
-    public function removeEmployee($id)
-    {
-        unset($this->employees[$id]);
-    }
 
     public function getEmployeeScheme()
     {
