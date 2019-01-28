@@ -39,7 +39,7 @@ class Users
     }
 
     public function validateGender($gender){
-        return (isset($gender) && in_array($gender, array('M','Ž','m','ž', 'Z','z'))) ? true : false;
+        return (isset($gender) && in_array($gender, array('M','Ž','Z'))) ? true : false;
     }
 
     public function validateNumber($number){
