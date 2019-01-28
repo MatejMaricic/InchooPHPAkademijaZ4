@@ -1,8 +1,8 @@
 <?php
-
+// Serves as class that controls the output based on user choice in main menu
 class AppManagement
 {
-    public function __construct()
+    public function __construct() // creates instances of all clasess used
     {
         new EmployeesStorage();
         $userAction = new UserAction();
@@ -48,7 +48,7 @@ class AppManagement
                         {
                             $userAction -> addMultipleUsers();
                         }
-                        $userAction ->getUser();
+
                         break;
 
 

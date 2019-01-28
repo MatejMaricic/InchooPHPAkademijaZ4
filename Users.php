@@ -1,16 +1,17 @@
 <?php
-
+//serves as a link between storage singleton and other classes
+//contains validators for input and methods for display of single or all employees
 class Users
 {
     protected $employeeStorage;
 
     public function __construct()
     {
-        $this->employeeStorage = EmployeesStorage::getInstance() ;
+        $this->employeeStorage = EmployeesStorage::getInstance() ; // storage is instanced only here, other classes get access to data via extend of Users class
     }
 
 
-
+// this method checks which input needs validation,sends data to a certain validator and returns true or false
     public function validateInput( $data, $key ){
 
         if($key === 'name'){
@@ -28,6 +29,7 @@ class Users
 
     }
 
+// validators for certain inputs
 
     public function validateString($data){
         return ( !isset( $data ) || ctype_alpha(str_replace(' ', '', $data)) === false ) ? false : true;

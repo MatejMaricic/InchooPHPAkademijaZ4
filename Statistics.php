@@ -1,5 +1,6 @@
 <?php
 
+// manages output in statistics menu and contains all methods needed
 class Statistics extends Users
 {
 
@@ -60,6 +61,7 @@ class Statistics extends Users
 
     }
 
+    //finds employee age based on id sent by another method
     public function employeeAge($id)
     {
         $today = new DateTime('NOW');
@@ -72,7 +74,7 @@ class Statistics extends Users
             return $employeeAge;
 
     }
-
+    //finds employee gender based on id sent by another method
     public function employeeGender($id)
     {
         $person = $this->employeeStorage->getEmployee($id);
@@ -83,7 +85,7 @@ class Statistics extends Users
     }
 
 
-
+    //calculates total income for certain age groups, uses employeeAge method to get the age for each employee
     public function totalIncome()
     {
         $total_under_20_income = 0;
@@ -117,10 +119,9 @@ class Statistics extends Users
         echo "\033[32m". "## Zaposlenici mlađi od 40: $total_under_40_income kn \n\n"."\033[0m";
         echo "\033[32m". "## Zaposlenici stariji od 40: $total_over_40_income kn \n\n"."\033[0m";
 
-
-
-
     }
+
+    //calculates average income for each gender, uses employeeGender method to get the gender for each employee
     public function average_by_gender()
     {
         $m = 0;

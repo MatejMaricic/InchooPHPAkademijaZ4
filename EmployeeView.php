@@ -1,5 +1,6 @@
 <?php
 
+// class for outputting all employees
 class EmployeeView extends Users
 {
 
