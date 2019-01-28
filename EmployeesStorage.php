@@ -24,17 +24,21 @@ class EmployeesStorage
     }
 
 
-    public function setEmployees($employees)
+    public function setEmployee($employee)
     {
-        $this->employees[] = $employees;
+        $this->employees[] = $employee;
+        return $employee;
+    }
+
+    public function getEmployee($id)
+    {
+        return $this->employees[$id];
     }
 
     public function removeEmployee($id)
     {
         unset($this->employees[$id]);
     }
-
-
 
     public function getEmployeeScheme()
     {
@@ -46,19 +50,8 @@ class EmployeesStorage
         unset($this->employees[$id]);
     }
 
-    public function editEmployee($id)
-    {
-        echo $id . " " . $this->employees[$id]['name'] . " " .  $this->employees[$id]['lastname'] . " " . $this->employees[$id]['birth'] . " " . $this->employees[$id]['gender'] . " " . $this->employees[$id]['income'];
-        unset($this->employees[$id]);
-
-
-        foreach ($this->getEmployeeScheme() as $key => $singleUser) {
-
-
-            $new_data[$key] = readline("$singleUser : ");
-
-        }
-        $this->employees[$id] = $new_data;
+    public function updateEmployee($id, $data){
+        $this->employees[$id] = $data;
     }
 
 

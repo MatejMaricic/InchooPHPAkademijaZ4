@@ -6,7 +6,7 @@ class Users
 
     public function __construct()
     {
-       $this->employeeStorage = EmployeesStorage::getInstance() ;
+        $this->employeeStorage = EmployeesStorage::getInstance() ;
     }
 
 
@@ -44,6 +44,38 @@ class Users
 
     public function validateNumber($number){
         return (is_numeric($number)) ? true : false;
+    }
+
+    public function displayAllEmployees()
+    {
+
+        echo "\e[32m";
+        echo "************ PREDGLED ZAPOSLENIKA ************\n\n";
+
+        $mask = "|%5.5s |%-15s | %-15s | %-15s| %-15s| %-15s\n";
+        printf($mask, 'ID', 'Ime', 'Prezime', 'Datum rođenja', 'Spol', 'Primanja');
+
+        foreach($this->employeeStorage->getEmployees() as $key => $singleUser)
+        {
+            printf($mask, $key, $singleUser['name'], $singleUser['lastname'],  $singleUser['birth'], $singleUser['gender'], $singleUser['income']);
+        }
+        echo "\e[0m";
+    }
+
+    public function displayOneEmployees($id)
+    {
+
+        $singleUser = $this->employeeStorage->getEmployee($id);
+
+        echo "\e[32m";
+        echo "********** PREGLED ".$singleUser['name']." ". $singleUser['lastname']."***********\n\n";
+        echo "Ime: ".$singleUser['name']."\n";
+        echo "Prezime: ". $singleUser['lastname']."\n";
+        echo "Datum rođenja: ". $singleUser['birth']."\n";
+        echo "Spol: ". $singleUser['gender']."\n";
+        echo "Primanja: ". $singleUser['income']."\n";
+
+        echo "\e[0m";
     }
 
 

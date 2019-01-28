@@ -7,6 +7,7 @@ class AppManagement
         new EmployeesStorage();
         $userAction = new UserAction();
         $listAllEmployees = new EmployeeView();
+        $printstat = new Statistics();
 
 
 
@@ -65,7 +66,7 @@ class AppManagement
                 case 5:
                     {
 
-                        $printstat = new Statistics();
+
                         $printstat ->printStatMenu();
                     }
 
