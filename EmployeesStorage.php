@@ -6,7 +6,7 @@ class EmployeesStorage
     protected static $instance = null;
 
     protected $employees = [];
-    protected $employeeScheme = ['name' => 'Ime:', 'lastname' => 'Prezime:', 'birth' => 'Datum Rođenja (dd. MM. YYYY):', 'gender' => 'Spol (M/Ž):', 'income' => 'Mjesečna primanja:'];
+    protected $employeeScheme = ['name' => 'Ime:', 'lastname' => 'Prezime:', 'birth' => 'Datum Rođenja (dd. MM. YYYY):', 'gender' => 'Spol (M/Ž):', 'income' => 'Mjesečna primanja (koristiti . za decimalan broj): '];
 
 
     public static function getInstance()

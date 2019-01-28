@@ -16,13 +16,16 @@ class UserAction extends Users {
                 $validate = $this->validateInput($userInput, $key);
                 var_dump($validate);
 
-                while ($validate === false)
+                while (!$validate)
                 {
 
 
-                    $userInput = readline("Pogrešan unos : ");
+                    $userInput = readline("Unesite ispravan format : ");
                     $validate = $this->validateInput($userInput, $key);
 
+                }
+                if ($key === 'income'){
+                    $userInput = number_format((float)$userInput, 2, '.', '');
                 }
 
                     $data[$key] = $userInput;
