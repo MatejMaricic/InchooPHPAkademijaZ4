@@ -12,7 +12,20 @@ class UserAction extends Users {
             foreach ($this->employeeStorage->getEmployeeScheme() as $key => $singleUser) {
 
 
-                $data[$key] = readline("$singleUser : ");
+                $userInput = readline("$singleUser : ");
+                $validate = $this->validateInput($userInput, $key);
+                var_dump($validate);
+
+                while ($validate === false)
+                {
+
+
+                    $userInput = readline("Pogrešan unos : ");
+                    $validate = $this->validateInput($userInput, $key);
+
+                }
+
+                    $data[$key] = $userInput;
 
             }
 
@@ -22,6 +35,8 @@ class UserAction extends Users {
 
 
     }
+
+
 
 
     public function addMultipleUsers()
