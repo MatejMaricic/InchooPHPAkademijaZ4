@@ -32,7 +32,7 @@ class Users
 // validators for certain inputs
 
     public function validateString($data){
-        return ( !isset( $data ) || ctype_alpha(str_replace(' ', '', $data)) === false ) ? false : true;
+        return ( !isset( $data ) || (preg_match('/^[\p{L} ]+$/u', $data)) === false ) ? false : true;
     }
 
     public function validateDate($date){
