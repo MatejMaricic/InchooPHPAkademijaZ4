@@ -30,7 +30,7 @@ class Statistics extends Users
                     }
                 case 3:
                     {
-                        break;
+                       $this->totalIncome();
                     }
                 case 4:
                     {
@@ -58,29 +58,57 @@ class Statistics extends Users
 
     }
 
-    public function ageSum()
+    public function employeeAge($id)
     {
-        $yearSum = 0;
         $today = new DateTime('NOW');
+        $person = $this->employeeStorage->getEmployee($id);
 
-       foreach ($this->employeeStorage->getEmployees() as $key =>$value){
-          if ($key = 'birth')
-          {
-           $employeeDate = new DateTime($value['birth']) ;
-           $employeeDiff = $today->diff($employeeDate);
-           $employeeYear = $employeeDiff->y;
+                $employeeDate = new DateTime($person['birth']);
+                $employeeDiff = $today->diff($employeeDate);
+                $employeeAge = $employeeDiff->y;
 
-
-          }
-
-           $yearSum += $employeeYear;
+            return $employeeAge;
 
     }
 
-        echo "\033[32m". "## Ukupna starost svih zaposlenika je  $yearSum  godina \n\n"."\033[0m";
-        echo "\033[32m". "## Ukupna starost svih zaposlenika (godine mjeseci i dani) je   \n\n"."\033[0m";
+
+
+    public function totalIncome()
+    {
+        $total_under_20_income = 0;
+        $total_under_30_income = 0;
+        $total_under_40_income = 0;
+        $total_over_40_income = 0;
+
+        foreach ($this->employeeStorage->getEmployees() as $key => $value)
+        {
+            $age = $this->employeeAge($key);
+            if ($age < 20){
+
+                $total_under_20_income += $value['income'];
+
+            }elseif ($age >=20 || $age <30){
+
+                $total_under_30_income += $value['income'];
+            }elseif ($age >=30 || $age <40){
+
+                $total_under_40_income += $value['income'];
+            }elseif ($age >40){
+
+                $total_over_40_income += $value['income'];
+            }
+
+        }
+        echo "\033[32m". "UKUPNA PRIMANJA ZAPOSLENIKA PO DOBNIM SKUPINAMA \n\n"."\033[0m";
+
+        echo "\033[32m". "## Zaposlenici mlađi od 20: $total_under_20_income kn \n\n"."\033[0m";
+        echo "\033[32m". "## Zaposlenici mlađi od 30: $total_under_30_income kn \n\n"."\033[0m";
+        echo "\033[32m". "## Zaposlenici mlađi od 40: $total_under_40_income kn \n\n"."\033[0m";
+        echo "\033[32m". "## Zaposlenici stariji od 40: $total_over_40_income kn \n\n"."\033[0m";
+
+
+
+
     }
-
-
 }
 
