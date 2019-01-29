@@ -60,7 +60,12 @@ class UserAction extends Users {
 
         $this->displayAllEmployees();
         $id = readline("Unesite broj ispred zaposlenika kojeg želite izbrisati :");
-        $this->employeeStorage->deleteEmployee($id);
+        $check = readline("Jeste li sigurni? da/ne: ");
+
+        if ($check === 'da'){
+            $this->employeeStorage->deleteEmployee($id);
+        }
+
     }
 
     // Lists all employees, user picks which employee needs to be edited

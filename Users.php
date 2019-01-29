@@ -52,7 +52,7 @@ class Users
     {
 
         echo "\e[32m";
-        echo "************ PREDGLED ZAPOSLENIKA ************\n\n";
+        echo "************ PREGLED ZAPOSLENIKA ************\n\n";
 
         $mask = "|%5.5s |%-15s | %-15s | %-15s| %-15s| %-15s\n";
         printf($mask, 'ID', 'Ime', 'Prezime', 'Datum rođenja', 'Spol', 'Primanja');

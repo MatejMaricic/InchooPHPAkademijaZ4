@@ -24,12 +24,14 @@ class Statistics extends Users
                 case 1:
 
                     $this->ageSum();
+                    break;
 
 
                 case 2:
-                    {
-                        break;
-                    }
+
+                    $this->averageAge();
+                    break;
+
                 case 3:
 
                        $this->totalIncome(); break;
@@ -128,6 +130,9 @@ class Statistics extends Users
         $f = 0;
         $male_income = 0;
         $female_income = 0;
+        $average_male = 0;
+        $average_female = 0;
+        $difference = 0;
         foreach ($this->employeeStorage->getEmployees() as $key =>$value)
         {
             $gender = $this->employeeGender($key);
@@ -154,6 +159,38 @@ class Statistics extends Users
 
     }
 
+    public function ageSum()
+    {
+
+        $today = new DateTime('NOW');
+        $totalDays = 0;
+
+        foreach( $this->employeeStorage->getEmployees() as $employee ){
+            $employeeDate = new DateTime( $employee['birth'] );
+            $employeeDiffDate = $today->diff($employeeDate)->format("%a");
+            $totalDays += (int) $employeeDiffDate;
+        }
+
+        $startDate = new DateTime(date("Y/m/d"));
+        $endDate = new DateTime(date("Y/m/d",strtotime("+$totalDays days")));
+        $diff = date_diff($startDate,$endDate);
+
+
+        echo "\033[32m". "## Ukupna starost zaposlenika je ".$diff->y." godina, ".$diff->m." mjeseci i ".$diff->d." dana \n\n"."\033[0m";
+    }
+
+    public function averageAge(){
+
+        $totalAge = 0;
+        foreach ($this->employeeStorage->getEmployees() as $key => $value)
+        {
+            $totalAge += $this->employeeAge($key);
+        }
+
+        $averageAge = round($totalAge / count($this->employeeStorage->getEmployees()) );
+
+        echo "\033[32m". "## Prosječna starost zaposlenika je $averageAge godina \n\n"."\033[0m";
+    }
 
 }
 
